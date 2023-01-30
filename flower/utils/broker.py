@@ -211,7 +211,7 @@ class RedisSocket(RedisBase):
     def __init__(self, broker_url, *args, **kwargs):
         super(RedisSocket, self).__init__(broker_url, *args, **kwargs)
         self.redis = redis.Redis(unix_socket_path='/' + self.vhost,
-                                 password=self.password)
+                                 password=self.password, ssl=True, ssl_cert_reqs=None)
 
 
 class RedisSsl(Redis):
